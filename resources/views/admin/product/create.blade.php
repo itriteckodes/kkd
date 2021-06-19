@@ -3,7 +3,9 @@
 @section('title')
     Product-Add
 @endsection
-
+@section('heading')
+    Add Product
+@endsection
 @section('content')
 <div class="row">
     <div class="col-lg-12">
@@ -14,6 +16,15 @@
             <div class="card-body">
                 <form action="{{ route('admin.product.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    <div class="form-group">
+                        <label for="select">Select Category</label>
+                        <select name="category_id" id="select" class="form-control" required>
+                            <option value="" selected disabled>Select-Category</option>
+                            @foreach (App\Models\Category::all() as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Product Name</label>
                         <input type="text" class="form-control" id="exampleFormControlInput1"

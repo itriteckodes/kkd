@@ -13,7 +13,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <link rel="shortcut icon" href="{{asset('assets/images/favicon.ico')}}">
-
+    <link rel='stylesheet' id='toastr-style-css'
+    href='{{asset("toastr.min.css")}}' type='text/css' media='all' />
     <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('assets/css/icons.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet" type="text/css">
@@ -31,7 +32,7 @@
             <div class="card-body">
 
                 <h3 class="text-center mt-0 m-b-15">
-                    <a href="index.html" class="logo logo-admin"><img src="{{asset('assets/images/logo.png')}}" height="54" alt="logo"></a>
+                    <a href="index.html" class="logo logo-admin"><img src="{{asset('kisaan.png')}}" height="94" alt="logo"></a>
                 </h3>
 
                 <h4 class="text-muted text-center font-18"><b>Sign In To Admin Panel</b></h4>
@@ -79,7 +80,8 @@
     <script src="{{asset('assets/js/waves.js')}}"></script>
     <script src="{{asset('assets/js/jquery.nicescroll.js')}}"></script>
     <script src="{{asset('assets/js/jquery.scrollTo.min.js')}}"></script>
-
+    <script src="{{asset('toastr.min.js')}}"></script>
+	@toastr_render
     <!-- App js -->
     <script src="{{asset('assets/js/app.js')}}"></script>
 

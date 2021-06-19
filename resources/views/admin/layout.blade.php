@@ -42,7 +42,7 @@
                 <div class="topbar-left">
                     <div class="text-center">
                         <!--<a href="index.html" class="logo">Admiry</a>-->
-                        <a href="index.html" class="logo"><img src="{{asset('assets/images/logo.png')}}" height="42" alt="logo"></a>
+                        <a href="{{ route('admin.dashboard')}}" class="logo"><img src="{{asset('kisaan.png')}}" height="92" alt="logo"></a>
                     </div>
                 </div>
 
@@ -50,10 +50,10 @@
 
                     <div class="user-details">
                         <div class="text-center">
-                            <img src="{{asset('assets/images/users/avatar-1.jpg')}}" alt="" class="rounded-circle">
+                            <img src="{{asset('avatar.png')}}" alt="" class="rounded-circle">
                         </div>
                         <div class="user-info">
-                            <h4 class="font-16">Anderson Barden</h4>
+                            <h4 class="font-16">{{ Auth::guard('admin')->user()->name }}</h4>
                             <span class="text-muted user-status"><i class="fa fa-dot-circle-o text-success"></i> Online</span>
                         </div>
                     </div>
@@ -61,9 +61,19 @@
                     <div id="sidebar-menu">
                         <ul>
                             <li>
-                                <a href="index.html" class="waves-effect">
+                                <a href="{{ route('admin.dashboard') }}" class="waves-effect">
                                     <i class="mdi mdi-view-dashboard"></i>
-                                    <span> Dashboard <span class="badge badge-primary pull-right">8</span></span>
+                                    <span> Dasboard </span>
+                                    {{-- <span class="badge badge-primary pull-right"></span> --}}
+                                </a>
+                            </li>    
+                            
+                            <li>
+                                <a href="{{ route('admin.category.index') }}" class="waves-effect">
+                                    <i class="mdi mdi-format-indent-increase
+                                    "></i>
+                                    <span> Category </span>
+                                    {{-- <span class="badge badge-primary pull-right"></span> --}}
                                 </a>
                             </li>
 
@@ -71,8 +81,8 @@
                                 <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-buffer"></i> <span>Product</span> </a>
                                 <ul class="list-unstyled">
                                     <li><a href="{{ route('admin.product.create') }}">Add Product</a></li>
-                                    {{-- <li><a href="ui-cards.html">Cards</a></li>
-                                    <li><a href="ui-tabs-accordions.html">Tabs &amp; Accordions</a></li>
+                                    <li><a href="{{ route('admin.product.index') }}">All Products</a></li>
+                                    {{-- <li><a href="ui-tabs-accordions.html">Tabs &amp; Accordions</a></li>
                                     <li><a href="ui-modals.html">Modals</a></li> --}}
                                 </ul>
                             </li>
@@ -120,11 +130,11 @@
                                 <li class="list-inline-item dropdown notification-list">
                                     <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button"
                                        aria-haspopup="false" aria-expanded="false">
-                                        <img src="{{asset('assets/images/users/avatar-1.jpg')}}" alt="user" class="rounded-circle">
+                                        <img src="{{asset('avatar.png')}}" alt="user" class="rounded-circle">
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                                         <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5 text-muted"></i> Profile</a>
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-logout m-r-5 text-muted"></i> Logout</a>
+                                        <a class="dropdown-item" href="{{ route('admin.logout') }}"><i class="mdi mdi-logout m-r-5 text-muted"></i> Logout</a>
                                     </div>
                                 </li>
 
@@ -137,7 +147,7 @@
                                     </button>
                                 </li>
                                 <li class="hide-phone list-inline-item app-search">
-                                    <h3 class="page-title">Dashboard</h3>
+                                    <h3 class="page-title">@yield('heading')</h3>
                                 </li>
                             </ul>
 

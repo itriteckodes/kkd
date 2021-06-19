@@ -16,8 +16,11 @@ class AuthController extends Controller
 
         ];
         if (Auth::guard('admin')->attempt($credentials)) {
+            toastr()->success('Logged In Successfully','Success');
+
             return redirect()->intended(route('admin.dashboard'));
         } else {
+            toastr()->error('Wrong Credentials','Login Failed');
             return redirect()->back()->withInput();
         }
     }

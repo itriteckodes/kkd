@@ -433,9 +433,8 @@
 								<h2>Payments</h2>
 								<div class="content mt-2">
 									<div class="radio ml-4">
-										<label class="radio-inline" for="1"><input name="type" id="1" type="radio" value="1"> Check Payments</label><br>
-										<label class="radio-inline" for="2"><input name="type" id="2" type="radio" value="0"> Cash On Delivery</label><br>
-										<label class="radio-inline" for="3"><input name="type" id="3" value="2" type="radio"> Easypaisa</label>
+										<label class="radio-inline" for="1"><input name="type" id="1" type="radio" value="0"> Cash On Delivery</label><br>
+										<label class="radio-inline" for="2"><input name="type" id="2" value="1" type="radio">Card Payment</label>
 									</div>
 								</div>
 							</div>

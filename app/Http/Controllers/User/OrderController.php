@@ -84,11 +84,6 @@ class OrderController extends Controller
                  return redirect()->route('home');   
             }
             elseif ($order->type == 1) {
-                Session::forget('cart');
-                toastr()->success('Order Placed Successfully','Success');
-              return redirect()->route('home');     
-            }
-            elseif ($order->type == 2) {
                 $order->delete();
                 return view('stripe.stripe')->with('amount',$amount)->with('code',$code);
             }

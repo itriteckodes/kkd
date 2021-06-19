@@ -83,8 +83,10 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
         Route::group(['middleware' => 'auth:admin'], function () {
             Route::get('logout', 'AuthController@logout')->name('logout');
-            Route::view('dashboard', 'admin.layout')->name('dashboard');
+            Route::view('dashboard', 'admin.index.index')->name('dashboard');
             Route::resource('product','ProductController');
+            Route::resource('order','OrderController');
+            Route::resource('category','CategoryController');
         });
 
     });
