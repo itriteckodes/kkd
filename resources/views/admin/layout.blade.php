@@ -86,16 +86,16 @@
                                     <li><a href="ui-modals.html">Modals</a></li> --}}
                                 </ul>
                             </li>
-
-                            {{-- <li class="has_sub">
-                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-cube-outline"></i> <span> Advanced UI </span> </a>
+                            
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-cube-outline"></i> <span> Orders</span> </a>
                                 <ul class="list-unstyled">
-                                    <li><a href="advanced-animation.html">Animation</a></li>
-                                    <li><a href="advanced-highlight.html">Highlight</a></li>
-                                    <li><a href="advanced-rating.html">Rating</a></li>
+                                    <li><a href="{{ route('admin.order.index') }}">New Orders</a></li>
+                                    <li><a href="{{ route('admin.order.create') }}">Completed Orders</a></li>
                                 </ul>
                             </li>
 
+                            {{-- 
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-album"></i> <span> Icons </span> </a>
                                 <ul class="list-unstyled">
@@ -133,7 +133,7 @@
                                         <img src="{{asset('avatar.png')}}" alt="user" class="rounded-circle">
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5 text-muted"></i> Profile</a>
+                                        {{-- <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5 text-muted"></i> Profile</a> --}}
                                         <a class="dropdown-item" href="{{ route('admin.logout') }}"><i class="mdi mdi-logout m-r-5 text-muted"></i> Logout</a>
                                     </div>
                                 </li>

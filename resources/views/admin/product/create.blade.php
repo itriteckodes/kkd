@@ -19,7 +19,7 @@
                     <div class="form-group">
                         <label for="select">Select Category</label>
                         <select name="category_id" id="select" class="form-control" required>
-                            <option value="" selected disabled>Select-Category</option>
+                            <option selected disabled>Select-Category</option>
                             @foreach (App\Models\Category::all() as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach

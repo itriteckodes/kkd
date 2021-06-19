@@ -8,7 +8,7 @@
 						<!-- Single Widget -->
 						<div class="single-footer about">
 							<div class="logo">
-								<a href="index.html"><img src="assets/home/images/kisaan.jpg" alt="#"></a>
+								<a href="index.html"><img src="{{ asset('assets/home/images/kisaan.jpg') }}" alt="#"></a>
 							</div>
 							<p class="text">We provide you the best quality for your fields and all types of agriculture.So,contact us all the time and buy the product which you want. </p>
 							<p class="call">Got Question? Call us 24/7<span><a href="tel:o313 6503931">+92 313 6503931</a></span></p>
@@ -80,7 +80,7 @@
 						</div>
 						<div class="col-lg-6 col-12">
 							<div class="right">
-								<img src="assets/home/images/payment-method.png" alt="#">
+								<img src="{{ asset('assets/home/images/payment-method.png') }}" alt="#">
 							</div>
 						</div>
 					</div>

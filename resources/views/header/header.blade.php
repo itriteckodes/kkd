@@ -43,7 +43,7 @@
 					<div class="col-lg-2 col-md-2 col-12">
 						<!-- Logo -->
 						<div class="logo">
-							<a href="{{url('index')}}"><img src="assets/home/images/kisaan.jpg" alt="logo"></a>
+							<a href="{{url('index')}}"><img src="{{ asset('assets/home/images/kisaan.jpg') }}" alt="logo"></a>
 						</div>
 						<!--/ End Logo -->
 						<!-- Search Form -->
@@ -61,20 +61,24 @@
 						<!--/ End Search Form -->
 						<div class="mobile-nav"></div>
 					</div>
+
 					<div class="col-lg-8 col-md-7 col-12">
 						<div class="search-bar-top">
+					<form action="{{ route('user.product.store') }}" method="POST">
+
 							<div class="search-bar">
-								<select>
+
+								<select name="category_id">
 									<option selected="">All Category</option>
-									<a href="{{url('pesticides')}}"><option>Pesticides</option></a>
-									<option>Insecticides</option>
-									<option>Fungicides</option>
+									@foreach (App\Models\Category::all() as $category)
+									<option value="{{ $category->id}}">{{ $category->name }}</option>
+									@endforeach
 								</select>
-								<form>
-									<input name="search" placeholder="Search Products Here....." type="search">
-									<button class="btnn"><i class="ti-search"></i></button>
-								</form>
+									<input name="search" placeholder="Search Products Here....." type="search" required>
+									<button class="btnn" type="submit"><i class="ti-search"></i></button>
 							</div>
+						</form>
+
 						</div>
 					</div>
 					<div class="col-lg-2 col-md-3 col-12">

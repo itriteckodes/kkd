@@ -36,6 +36,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        
         Category::create($request->all());
         toastr()->success('Category Added Successfully','Success');
         return redirect()->back();

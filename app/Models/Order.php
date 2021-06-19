@@ -27,4 +27,9 @@ class Order extends Model
         'order_code',
         'type',
     ];
+
+    
+    public function items(){
+        return $this->hasMany(OrderItems::class);
+    }
 }

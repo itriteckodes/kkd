@@ -36,7 +36,8 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $products = Product::where('name','LIKE','%'.$request->search.'%')->orWhere('category_id',$request->category_id)->get();
+        return view('search.search')->with('products',$products);
     }
 
     /**

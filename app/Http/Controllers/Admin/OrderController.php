@@ -15,7 +15,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Order::where('status',false)->get();
+        return view('admin.order.neworder')->with('orders',$orders);
     }
 
     /**
@@ -25,7 +26,8 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        $orders = Order::where('status',true)->get();
+        return view('admin.order.completed')->with('orders',$orders);
     }
 
     /**
@@ -47,7 +49,8 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+       $items = $order->items;
+       return view('admin.order.order_detail')->with('items',$items);
     }
 
     /**
@@ -58,7 +61,11 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        //
+        $order->update([
+            'status'=>true
+        ]);
+        toastr()->success('Order Completed SuccessFully','Success');
+        return redirect()->back();
     }
 
     /**

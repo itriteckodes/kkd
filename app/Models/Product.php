@@ -13,19 +13,26 @@ class Product extends Model
     protected $fillable = [
         'name',
         'image',
-        'price'
+        'price',
+        'category_id'
     ];
 
     public function setImageAttribute($value){
 
         if(is_file($value)){
-            $this->attributes['image'] = ImageHelper::saveImage($value,'images'); 
+            $this->attributes['image'] = ImageHelper::saveResizedImage($value,'images',263,394); 
         }
         
     
     }
-
+    
     public function getImageAttribute($value){
         return asset($value);
     }
+
+    
+    public function category(){
+        return $this->belongsTo(Category::class);
+    } 
+    
 }

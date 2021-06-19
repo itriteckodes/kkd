@@ -14,6 +14,7 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Image</th>
+        <th scope="col">Category</th>
         <th scope="col">Name</th>
         <th scope="col">Price</th>
         <th scope="col">Action</th>
@@ -25,9 +26,10 @@
       <tr>
         <td>{{$key+1}}</td>
         <td><img src="{{ $product->image }}" height="75" width="50" alt=""></td>
+        <td>{{$product->category->name}}</td>
         <td>{{$product->name}}</td>
         <td>{{$product->price}}</td>
-        <td><a id="{{ $product->id }}" name="{{ $product->name }}" price="{{ $product->price }}" image="{{ $product->image }}"  data-toggle="modal" data-target="#edit-model" class="btn btn-info edit">Edit</a></td>
+        <td><a id="{{ $product->id }}" name="{{ $product->name }}" category="{{ $product->category_id }}" price="{{ $product->price }}" image="{{ $product->image }}"  data-toggle="modal" data-target="#edit-model" class="btn btn-info edit">Edit</a></td>
         <td>
             <form action="{{route('admin.product.destroy',$product->id)}}" method="POST">
               @method('DELETE')
@@ -52,18 +54,28 @@
                 </button>
             </div>
             <div class="modal-body">
+
+                    <div class="form-group">
+                        <label for="name">Select Category</label>
+                        <select  class="form-control" id="category" name="category_id" required>
+                            @foreach (App\Models\Category::all() as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>      
+                    
                     <div class="form-group">
                         <label for="name">Product Name</label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="Enter Product Name" required>
                     </div>
                     <div class="form-group">
                         <label for="price">Product Price</label>
-                        <input type="text" class="form-control" id="price" name="" placeholder="Enter Product Price" required>
+                        <input type="text" class="form-control" id="price" name="price" placeholder="Enter Product Price" required>
                     </div>
                     <div class="form-group">
                         <label for="image">Product image</label>
                         <input type="file" class="form-control" id="image" name="image">
-                        <span class=""></span>
+                        <span class="text-primary">if don't want to change leave empty</span>
                     </div>
                     
             </div>
@@ -85,8 +97,10 @@
     let name = $(this).attr('name');
     let price = $(this).attr('price');
     let image = $(this).attr('image');
+    let category = $(this).attr('category');
     $('#name').val(name);
     $('#price').val(price);
+    $('#category').val(category);
     $('#myForm').attr('action','{{route("admin.product.update",'')}}' + '/' +id);
 });
 

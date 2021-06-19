@@ -100,6 +100,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::group(['middleware' => 'auth:user'], function () {
         Route::get('logout', 'AuthController@logout')->name('logout');
         Route::post('cart/increment', 'CartController@increment');
+        Route::resource('product','ProductController');
         Route::post('cart/decrement', 'CartController@decrement');
         Route::post('cart/remove', 'CartController@remove');
         Route::get('cart/clear', 'CartController@clear');

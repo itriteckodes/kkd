@@ -37,6 +37,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+
         Product::create($request->all());
         toastr()->success('Product Added Successfully','Success');
         return redirect()->back();
@@ -73,7 +74,19 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        if ($request->image != null) {
+            $product->update($request->all());
+        }
+        else{
+            $product->update([
+                'name' => $request->name,
+                'price' => $request->price,
+                'category_id' => $request->category_id,
+            ]);
+        }
+
+        toastr()->success('Product Updated Successfully','Suucess');
+        return redirect()->back();
     }
 
     /**
@@ -84,6 +97,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        toastr()->warning('Product Deleted Successfully','Done');
+        return redirect()->back();
     }
 }
