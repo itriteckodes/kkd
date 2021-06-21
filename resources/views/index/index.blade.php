@@ -485,7 +485,7 @@
                         </div>
                     </div>
                     <!-- Start Single List  -->
-                    @foreach (App\Models\Product::all()->random(3) as $product)
+                    @foreach (App\Models\Product::all()->random(3)->unique() as $product)
                         
                     <div class="single-list">
                         <div class="row">
@@ -515,7 +515,7 @@
                             </div>
                         </div>
                     </div>
-                    @foreach (App\Models\Product::all()->random(3) as $product)
+                    @foreach (App\Models\Product::all()->random(3)->unique() as $product)
 
                     <!-- Start Single List  -->
 
@@ -547,7 +547,7 @@
                             </div>
                         </div>
                     </div>
-                    @foreach (App\Models\Product::all()->random(3) as $product)
+                    @foreach (App\Models\Product::all()->random(3)->unique() as $product)
 
                     <!-- Start Single List  -->
                     <div class="single-list">
@@ -555,7 +555,7 @@
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="list-image overlay">
                                     <img src="{{ $product->image }}" alt="#">
-                                    <a id="{{ $product->id }} class="buy add-cart"><i class="fa fa-shopping-bag"></i></a>
+                                    <a id="{{ $product->id }}" class="buy add-cart"><i class="fa fa-shopping-bag"></i></a>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12 no-padding">
