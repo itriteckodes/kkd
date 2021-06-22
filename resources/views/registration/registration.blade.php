@@ -9,7 +9,7 @@
 		<!--end favicon-->
 		<!-- MATERIAL DESIGN-->
 		<link rel="stylesheet" href="{{asset('assets/home/registration/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css')}}">
-
+        <link rel='stylesheet' href='{{asset("toastr.min.css")}}' type='text/css'/>
 		<!-- STYLE CSS -->
 		<link rel="stylesheet" href="{{asset('assets/home/registration/css/style.css')}}">
 	</head>
@@ -53,4 +53,6 @@
 		</div>
 		
 	</body>
+	<script src="{{asset('toastr.min.js')}}"></script>
+		@toastr_render
 </html>
