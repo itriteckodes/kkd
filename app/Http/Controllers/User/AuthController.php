@@ -17,6 +17,7 @@ class AuthController extends Controller
         if (Auth::guard('user')->attempt($credentials)) {
             return redirect()->intended(url('index'));
         }else {
+            toastr()->error('Wrong Credentials','Error');
             return redirect()->back()->withInput();
         }
     }

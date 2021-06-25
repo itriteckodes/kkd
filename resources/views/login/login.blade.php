@@ -5,6 +5,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
+<link rel='stylesheet' id='toastr-style-css' href='{{ asset('toastr.min.css') }}' type='text/css' media='all' />
+
 	<link rel="icon" type="image/png" href="{{asset('assets/home/images/favicon.png')}}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/home/login/vendor/bootstrap/css/bootstrap.min.css')}}">
@@ -104,6 +106,8 @@
 	
 <!--===============================================================================================-->
 	<script src="{{asset('assets/home/login/vendor/jquery/jquery-3.2.1.min.js')}}"></script>
+	<script src="{{ asset('toastr.min.js') }}"></script>
+    @toastr_render
 <!--===============================================================================================-->
 	<script src="{{asset('assets//home/login/vendor/animsition/js/animsition.min.js')}}"></script>
 <!--===============================================================================================-->
@@ -118,6 +122,5 @@
 	<script src="{{asset('assets/home/login/vendor/countdowntime/countdowntime.js')}}"></script>
 <!--===============================================================================================-->
 	<script src="{{asset('assets/home/login/js/main.js')}}"></script>
-
 </body>
 </html>

@@ -4,6 +4,8 @@
 		<meta charset="utf-8">
 		<title>Registration Form</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel='stylesheet' id='toastr-style-css' href='{{ asset('toastr.min.css') }}' type='text/css' media='all' />
 		<!--favicon-->
         <link rel="icon" type="image/png" href="{{asset('assets/home/images/favicon.png')}}">
 		<!--end favicon-->
@@ -51,6 +53,9 @@
 				</form>
 			</div>
 		</div>
-		
+			<script src="{{asset('assets/home/login/vendor/jquery/jquery-3.2.1.min.js')}}"></script>
+		<script src="{{ asset('toastr.min.js') }}"></script>
+    @toastr_render
 	</body>
+
 </html>

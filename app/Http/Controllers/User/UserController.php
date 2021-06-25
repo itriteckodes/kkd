@@ -36,9 +36,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $email = count(User::where('email',$request->email)->get());
+        if($email == 0){
         $user = User::create($request->all());
-
+        }
+        else {
+            toastr()->warning('Email already exist','Error');
+            return redirect()->back();
+        }
         if ($user) {
+        
+        toastr()->success('User Registered Successfully','Success');
         return view('login/login');
         }
         else {
