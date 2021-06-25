@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Helpers\Validate;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -44,6 +45,11 @@ class UserController extends Controller
             toastr()->warning('Email already exist','Error');
             return redirect()->back();
         }
+
+        $credentials = Validate::register($request, User::class);
+
+        $user = User::create($credentials);
+
         if ($user) {
         
         toastr()->success('User Registered Successfully','Success');

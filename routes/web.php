@@ -71,7 +71,7 @@ Route::get('login', function () {
 
 Route::get('reg', function () {
     return view('registration/registration');
-});
+})->name('reg');
 
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
     
