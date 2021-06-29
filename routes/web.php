@@ -87,6 +87,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::resource('product','ProductController');
             Route::resource('order','OrderController');
             Route::resource('category','CategoryController');
+            Route::resource('contact','ContactController');
         });
 
     });
@@ -107,6 +108,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::post('cart/add', 'CartController@add');
         Route::post('order/pay', 'PaymentController@stripepay')->name('stripe.pay');
         Route::resource('order','OrderController');
+        Route::resource('contact','ContactController');
         });
         
     });

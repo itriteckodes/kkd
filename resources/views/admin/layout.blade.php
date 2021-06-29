@@ -95,6 +95,15 @@
                                 </ul>
                             </li>
 
+                            <li>
+                                <a href="{{ route('admin.contact.index') }}" class="waves-effect">
+                                    <i class="mdi mdi-format-indent-increase
+                                    "></i>
+                                    <span>Messages</span>
+                                    {{-- <span class="badge badge-primary pull-right"></span> --}}
+                                </a>
+                            </li>
+
                             {{-- 
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-album"></i> <span> Icons </span> </a>
