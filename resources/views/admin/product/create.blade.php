@@ -35,6 +35,12 @@
                         <input type="number" class="form-control" id="exampleFormControlInput1"
                             placeholder="Enter price" name="price" required>
                     </div>
+                    
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Product Stock</label>
+                        <input type="number" class="form-control" id="exampleFormControlInput1"
+                            placeholder="Enter stock" name="stock" required>
+                    </div>
                     <div class="form-group">
                         <label for="exampleFormControlFile1">Select Product Image</label>
                         <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image" required>

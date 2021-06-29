@@ -44,49 +44,53 @@ class OrderController extends Controller
     public function store(Request $request)
     {
 
-        if(Auth::guard('user')->user()==null){
+        if (Auth::guard('user')->user() == null) {
             $user_id = null;
-        }else{
-           $user_id = Auth::guard('user')->user()->id;
+        } else {
+            $user_id = Auth::guard('user')->user()->id;
         }
 
 
         $amount = (Session::get('cart')['amount']);
-         $order = Order::create([
-             'user_id' => $user_id,
-             'order_code' => rand(100000, 999999),
-             'qty' =>Session::get('cart')['qty'],
-             'subtotal' =>Session::get('cart')['amount'],
-             'amount'=>$amount
-         ]+$request->all());
-         foreach(Cart::products() as $product){
-             OrderItems::create([
-                 'product_id' => $product->id,
-                 'order_id' => $order->id,
-                 'qty' => $product['qty']
-             ]);
-            //  $productt = Product::find($product->id);
-            //  $productt->stock=$productt->stock-$product['qty'];
-            //  $productt->update();
-         }
-         $code = $order->order_code;
-        //   $order->email = 'siddiqueakbar560@gmail.com';
-            // $data = ['code' => $order->order_code];
-            // Mail::send('mail', $data, function ($message) use ($order){
-            //     $message->from('admin@mail.com','Admin');
-            //     $message->to($order->email, 'Fixer')
-            //     ->subject('Order tracking code');
-            // }); 
+        foreach (Cart::products() as $product) {
+            $mproduct = Product::find($product->id);
+            if ($product->stock > $product['qty']) {
+                $mproduct->update([
+                    'stock' => $product->stock - $product['qty']
+                ]);
+            }
+            else
+            {
+                toastr()->error("item out of stock");
+                return redirect()->back();
+            }
+        
+        }
+        $order = Order::create([
+            'user_id' => $user_id,
+            'order_code' => rand(100000, 999999),
+            'qty' => Session::get('cart')['qty'],
+            'subtotal' => Session::get('cart')['amount'],
+            'amount' => $amount
+        ] + $request->all());
+        foreach (Cart::products() as $product) {
 
-            if ($order->type == 0) {
-                 Session::forget('cart');
-                 toastr()->success('Order Placed Successfully','Success');
-                 return redirect()->route('home');   
-            }
-            elseif ($order->type == 1) {
-                $order->delete();
-                return view('stripe.stripe')->with('amount',$amount)->with('code',$code);
-            }
+            OrderItems::create([
+                'product_id' => $product->id,
+                'order_id' => $order->id,
+                'qty' => $product['qty']
+            ]);
+        }
+        $code = $order->order_code;
+
+        if ($order->type == 0) {
+            Session::forget('cart');
+            toastr()->success('Order Placed Successfully', 'Success');
+            return redirect()->route('home');
+        } elseif ($order->type == 1) {
+            $order->delete();
+            return view('stripe.stripe')->with('amount', $amount)->with('code', $code);
+        }
     }
 
     /**
@@ -133,6 +137,4 @@ class OrderController extends Controller
     {
         //
     }
-
-
 }

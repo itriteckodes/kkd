@@ -17,6 +17,7 @@
         <th scope="col">Category</th>
         <th scope="col">Name</th>
         <th scope="col">Price</th>
+        <th scope="col">Stock</th>
         <th scope="col">Action</th>
         <th scope="col">Action</th>
       </tr>
@@ -29,6 +30,7 @@
         <td>{{$product->category->name}}</td>
         <td>{{$product->name}}</td>
         <td>{{$product->price}}</td>
+        <td>{{$product->stock}}</td>
         <td><a id="{{ $product->id }}" name="{{ $product->name }}" category="{{ $product->category_id }}" price="{{ $product->price }}" image="{{ $product->image }}"  data-toggle="modal" data-target="#edit-model" class="btn btn-info edit">Edit</a></td>
         <td>
             <form action="{{route('admin.product.destroy',$product->id)}}" method="POST">

@@ -14,7 +14,8 @@ class Product extends Model
         'name',
         'image',
         'price',
-        'category_id'
+        'category_id',
+        'stock'
     ];
 
     public function setImageAttribute($value){
